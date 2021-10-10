@@ -18,6 +18,7 @@ jobs:
     - name: Download and unzip your linux repository of the current commit number of the submodule.
       run: |
         get https://github.com/min99830/linux/archive/${{env.hash}}.zip
+        mkdir ${{env.hash}}
         unzip ${{env.hash}}.zip -d ./${{env.hash}}
         
     - name: Build the unzipped source code using ./build-linux.sh <unzipped linux dir> tinyconfig
