@@ -17,7 +17,7 @@ jobs:
       
     - name: Download and unzip your linux repository of the current commit number of the submodule.
       run: |
-        get https://github.com/min99830/linux/archive/linux-${hash:1:40}.zip
+        wget https://github.com/min99830/linux/archive/linux-${hash:1:40}.zip
         mkdir linux-${hash:1:40}
         unzip linux-${hash:1:40}.zip -d ./linux-${hash:1:40}
         
