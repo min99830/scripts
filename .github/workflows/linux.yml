@@ -2,7 +2,7 @@ name: C-1
 
 on:
   push:
-    tags: csi2115-hw2
+    branches: main
     
   workflow_dispatch:
 
