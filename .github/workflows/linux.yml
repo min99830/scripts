@@ -12,14 +12,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Get hash
-      run: echo "git_hash=$(git log -1 --pretty=format:"%H")" >> $GITHUB_HASH
+    - name: Get submodules hash
+      run: echo "hash=${git submodule status}"
       
     - name: Download and unzip your linux repository of the current commit number of the submodule.
       run: |
-        get https://github.com/min99830/linux/archive/${{env.hash}}.zip
-        mkdir ${{env.hash}}
-        unzip ${{env.hash}}.zip -d ./${{env.hash}}
+        get https://github.com/min99830/linux/archive/linux-${hash:1:40}.zip
+        mkdir linux-${hash:1:40}
+        unzip linux-${hash:1:40}.zip -d ./linux-${hash:1:40}
         
     - name: Build the unzipped source code using ./build-linux.sh <unzipped linux dir> tinyconfig
       run: ./build-linux.sh ./${{env.hash}} tinyconfig
